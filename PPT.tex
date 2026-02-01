@@ -1,0 +1,280 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Intro to R4DS},
+  pdfauthor={Ben Marmont},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Intro to R4DS}
+\author{Ben Marmont}
+\date{08/03/2023}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{WSAFE589-23A (HAM)}
+\phantomsection\label{wsafe589-23a-ham}
+\begin{block}{R for Data Science}
+\phantomsection\label{r-for-data-science}
+\end{block}
+\end{frame}
+
+\begin{frame}{About me}
+\phantomsection\label{about-me}
+Ben Marmont (Lecturer)
+
+\begin{itemize}
+\tightlist
+\item
+  Economist at DairyNZ
+\item
+  Master of Management (Economics) from University of Waikato
+\item
+  Carpentries qualified instructor (R)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{About the course}
+\phantomsection\label{about-the-course}
+\begin{itemize}
+\tightlist
+\item
+  Schedule
+
+  \begin{itemize}
+  \tightlist
+  \item
+    All online, recordings available
+  \item
+    Email to make an appointment for office hours
+  \end{itemize}
+\end{itemize}
+
+\pandocbounded{\includegraphics[keepaspectratio]{schedulev2.png}}
+\end{frame}
+
+\begin{frame}{Content}
+\phantomsection\label{content}
+\begin{itemize}
+\tightlist
+\item
+  R for Data Science Second edition
+  (\href{https://r4ds.hadley.nz/}{R4DS})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://hadley.nz/}{Hadley Wickham} is from NZ and is now the
+    Chief Scientist at RStudio (hopefully you recognize that name!) and
+    author of four open access books to help people learn R all the way
+    through to advanced extension skills.
+  \end{itemize}
+\item
+  Data science in the tidyverse
+\end{itemize}
+
+\pandocbounded{\includegraphics[keepaspectratio]{tidyverse.png}}
+\end{frame}
+
+\begin{frame}{Pedagogy}
+\phantomsection\label{pedagogy}
+\href{https://orchid00.github.io/The_Carpentries_info/overview-of-carpentries-pedagogic-model.html}{Inspired
+by the carpentries}
+
+\begin{itemize}
+\tightlist
+\item
+  Active learning (practice) is key, this course will have minimal
+  components where I speak to you i.e.~lecture. Instead, we will utilise
+  `live coding'.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Live coding will show you my workflow, my mistakes (everyone makes
+    them) and how I troubleshoot them!
+  \item
+    When you run into difficulty utilise the chat in class,
+    communicating with others is key to understanding
+  \item
+    Spaced retrieval
+  \item
+    Managed cognitive load
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Assessments}
+\phantomsection\label{assessments}
+These will be made available as we get closer to the time, more
+information on moodle.
+
+\begin{itemize}
+\tightlist
+\item
+  1: Basic Data Analysis, due 3/4/23
+\item
+  2: Visualisation, due 17/5/23
+\item
+  3: Online Timed Assessment, 48 hours 9/6/23 - 11/6/23
+\item
+  4: Data retrieval and modelling, due 22/6/23
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How to find help?}
+\phantomsection\label{how-to-find-help}
+\begin{itemize}
+\tightlist
+\item
+  Collaboration forum (moodle)
+\item
+  The chat during lectures (on wednesday ask your peers, on Michael will
+  be in the chat)
+\item
+  Chat GPT
+\item
+  Office hours (email Michael for appointment)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Resources (links imbedded):}
+\phantomsection\label{resources-links-imbedded}
+\begin{itemize}
+\tightlist
+\item
+  Moodle \href{https://www.waikato.ac.nz/}{log in here}
+\item
+  \href{https://r4ds.hadley.nz/}{Textbook}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The first iteration of the textbook has a significantly different
+    order of content
+  \end{itemize}
+\item
+  Ben's \href{https://github.com/BenMarmont/waikato_r4ds_2023}{GitHub
+  repository}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What about you?}
+\phantomsection\label{what-about-you}
+\begin{itemize}
+\tightlist
+\item
+  Round table:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Name
+  \item
+    Role
+  \item
+    Reason for doing this course
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}
